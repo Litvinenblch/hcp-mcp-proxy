@@ -12,7 +12,7 @@
 // - hcp_list_appointments
 // - hcp_get_schedule (employees + appointments for a date)
 //
-// Bypasses Anthropic's broken OAuth flow by embedding the HCP API key
+// Bypasses Anthropic broken OAuth flow by embedding the HCP API key
 // directly in the URL path, the same pattern Firecrawl uses.
 
 const express = require('express');
@@ -37,8 +37,8 @@ description:
 inputSchema: {
 type: 'object',
 properties: {
-scheduled_start_min: { type: 'string', description: 'ISO date (YYYY-MM-DD) — earliest scheduled start' },
-scheduled_start_max: { type: 'string', description: 'ISO date (YYYY-MM-DD) — latest scheduled start' },
+scheduled_start_min: { type: 'string', description: 'ISO date (YYYY-MM-DD) earliest scheduled start' },
+scheduled_start_max: { type: 'string', description: 'ISO date (YYYY-MM-DD) latest scheduled start' },
 work_status: {
 type: 'array',
 items: { type: 'string', enum: WORK_STATUSES },
@@ -83,7 +83,7 @@ required: ['id'],
 },
 {
 name: 'hcp_list_employees',
-description: 'List HCP employees (techs, CSRs, admins). Useful to map names → IDs for filtering jobs.',
+description: 'List HCP employees (techs, CSRs, admins). Useful to map names to IDs for filtering jobs.',
 inputSchema: {
 type: 'object',
 properties: {
@@ -94,7 +94,7 @@ page_size: { type: 'integer', default: 100, maximum: 200 },
 },
 {
 name: 'hcp_list_estimates',
-description: 'List HCP estimates with optional filters. Useful for tracking quote → won conversion.',
+description: 'List HCP estimates with optional filters. Useful for tracking quote to won conversion.',
 inputSchema: {
 type: 'object',
 properties: {
@@ -113,12 +113,12 @@ page_size: { type: 'integer', default: 25, maximum: 200 },
 },
 {
 name: 'hcp_list_invoices',
-description: 'List HCP invoices. Use for revenue analysis, AR aging, or job → invoice attribution.',
+description: 'List HCP invoices. Use for revenue analysis, AR aging, or job to invoice attribution.',
 inputSchema: {
 type: 'object',
 properties: {
-invoice_date_min: { type: 'string', description: 'ISO date — earliest invoice date' },
-invoice_date_max: { type: 'string', description: 'ISO date — latest invoice date' },
+invoice_date_min: { type: 'string', description: 'ISO date earliest invoice date' },
+invoice_date_max: { type: 'string', description: 'ISO date latest invoice date' },
 customer_id: { type: 'string' },
 page: { type: 'integer', default: 1 },
 page_size: { type: 'integer', default: 25, maximum: 200 },
@@ -128,7 +128,7 @@ page_size: { type: 'integer', default: 25, maximum: 200 },
 {
 name: 'hcp_list_appointments',
 description:
-'List scheduled HCP appointments (job-instances on a calendar). Returns scheduled_start, scheduled_end, assigned employees. Use to view the techs' calendar.',
+'List scheduled HCP appointments (job-instances on a calendar). Returns scheduled_start, scheduled_end, assigned employees. Use to view the techs calendar.',
 inputSchema: {
 type: 'object',
 properties: {
@@ -147,8 +147,8 @@ description:
 inputSchema: {
 type: 'object',
 properties: {
-date_min: { type: 'string', description: 'ISO date (YYYY-MM-DD) — start of range' },
-date_max: { type: 'string', description: 'ISO date (YYYY-MM-DD) — end of range (inclusive)' },
+date_min: { type: 'string', description: 'ISO date (YYYY-MM-DD) start of range' },
+date_max: { type: 'string', description: 'ISO date (YYYY-MM-DD) end of range (inclusive)' },
 },
 required: ['date_min'],
 },
@@ -365,7 +365,7 @@ req.protocol +
 '://' +
 req.get('host') +
 '/<HCP_API_KEY>/mcp\n\n' +
-' <HCP_API_KEY> = HouseCall Pro API token (Settings → API)\n\n' +
+' <HCP_API_KEY> = HouseCall Pro API token (Settings to API)\n\n' +
 'Available tools: ' +
 tools.length +
 '\n' +
